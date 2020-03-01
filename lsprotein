@@ -1,0 +1,33 @@
+# /usr/bin/env python3
+
+# lsprotein - Main source file of lsprotein
+# Written by Ercan Ersoy.
+
+import sys
+import urllib
+from bs4 import BeautifulSoup
+
+if __name__ == '__main__':
+    for protein_index in range(1, len(sys.argv)):
+        protein = sys.argv[protein_index]
+
+        try:
+            data = urllib.request.urlopen(
+                'http://www.rcsb.org/pdb/rest/describePDB?structureId='
+                + protein).read()
+        except urllib.error.HTTPError as http_error:
+            print(http_error)
+            sys.exit(1)
+
+        bs = BeautifulSoup(data, 'lxml-xml')
+        pdb = bs.find_all('PDB')[0]
+
+        print('Strcuture PDB Id:', pdb['structureId'])
+        print('Strcuture PDB Title:', pdb['title'])
+        print('Pubmed Id:', pdb['pubmedId'])
+
+        ids = bs.find_all('relatedPDB')
+        for i in range(0, len(ids)):
+            print('Related PDB Id: ', str(ids[i]['pdbId']))
+
+        print()
