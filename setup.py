@@ -8,6 +8,7 @@ from setuptools import setup, find_packages
 setup(
     name='lsprotein',
     description='Protein lister on command line interface',
+    long_description='Protein lister on command line interface',
     keywords='protein ls lister pdb protein-data-bank protein-database \
     rest-api command-line cli command-line-interface',
     version='0.1',
