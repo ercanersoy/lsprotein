@@ -9,3 +9,8 @@ This software has been licensed by MIT License.
 ## Usage
 
     lsprotein protein_id [protein_id] [protein_id] ...
+    lsprotein -h
+
+## Parameters
+
+**-h:** Display help and exit.
