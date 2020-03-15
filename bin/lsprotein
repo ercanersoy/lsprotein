@@ -5,16 +5,23 @@
 
 import sys
 import urllib
+import lsprotein.help
 from bs4 import BeautifulSoup
 
 if __name__ == '__main__':
-    for protein_index in range(1, len(sys.argv)):
-        protein = sys.argv[protein_index]
+    if len(sys.argv) == 1:
+        lsprotein.help.print_help_information()
+
+    for parameter_index in range(1, len(sys.argv)):
+        parameter = sys.argv[parameter_index]
+
+        if parameter == '-h':
+            lsprotein.help.print_help_information()
 
         try:
             data = urllib.request.urlopen(
                 'http://www.rcsb.org/pdb/rest/describePDB?structureId='
-                + protein).read()
+                + parameter).read()
         except urllib.error.HTTPError as http_error:
             print(http_error)
             sys.exit(1)
