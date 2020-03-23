@@ -18,13 +18,17 @@ if __name__ == '__main__':
         if parameter == '-h' or parameter == '--help':
             lsprotein.help.print_help_information()
 
+        if len(parameter) != 4:
+            print('Protein Id character length must equal four.')
+            sys.exit(1)
+
         try:
             data = urllib.request.urlopen(
                 'http://www.rcsb.org/pdb/rest/describePDB?structureId='
                 + parameter).read()
         except urllib.error.HTTPError as http_error:
             print(http_error)
-            sys.exit(1)
+            sys.exit(2)
 
         bs = BeautifulSoup(data, 'lxml-xml')
         pdb = bs.find_all('PDB')[0]
