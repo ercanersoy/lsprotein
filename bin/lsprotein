@@ -31,14 +31,34 @@ if __name__ == '__main__':
             sys.exit(2)
 
         bs = BeautifulSoup(data, 'lxml-xml')
-        pdb = bs.find_all('PDB')[0]
 
-        print('Strcuture PDB Id:', pdb['structureId'])
-        print('Strcuture PDB Title:', pdb['title'])
-        print('Pubmed Id:', pdb['pubmedId'])
+        try:
+            pdb = bs.find_all('PDB')[0]
+        except IndexError:
+            print('Specified id not found.')
+            break
+
+        try:
+            print('Strcuture PDB Id:', pdb['structureId'])
+        except NameError:
+            print('Strcuture PDB Id: Not found')
+
+        try:
+            print('Strcuture PDB Title:', pdb['title'])
+        except NameError:
+            print('Strcuture PDB Title: Not found')
+
+        try:
+            print('Pubmed Id:', pdb['pubmedId'])
+        except NameError:
+            print('Pubmed Id: Not found')
 
         ids = bs.find_all('relatedPDB')
-        for i in range(0, len(ids)):
-            print('Related PDB Id: ', str(ids[i]['pdbId']))
+
+        try:
+            for i in range(0, len(ids)):
+                print('Related PDB Id: ', str(ids[i]['pdbId']))
+        except NameError:
+            print('Related PDB Id: Not found')
 
         print()
