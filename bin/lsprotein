@@ -18,6 +18,9 @@ if __name__ == '__main__':
         if parameter == '-h' or parameter == '--help':
             lsprotein.help.print_help_information()
 
+        if parameter == '-v' or parameter == '--version':
+            lsprotein.version.print_version_information()
+
         if len(parameter) != 4:
             print('Protein Id character length must equal four.')
             sys.exit(1)
