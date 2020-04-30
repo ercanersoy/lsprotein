@@ -3,8 +3,8 @@
 # help.py - Help source file of lsprotein
 # Written by Ercan Ersoy (http://ercanersoy.net).
 
-import lsprotein.version
 import sys
+import lsprotein.version
 
 def print_help_information():
     print('lsprotein ' + lsprotein.version.lsprotein_version)
@@ -21,5 +21,6 @@ def print_help_information():
     print()
     print('Command Line Parameters:')
     print('  -h, --help  Display help information and exit.')
+    print('  -v, --version  Display version information and exit.')
 
     sys.exit(0)

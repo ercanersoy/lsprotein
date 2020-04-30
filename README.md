@@ -16,8 +16,8 @@ This software has been licensed by MIT License.
 
 **-h:** Display help information and exit.
 
-**--help:** Display help information and exit.
+**--help:** Ailas of `-h`.
 
 **-v:** Display version information and exit.
 
-**--version:** Display version information and exit.
+**--version:** Ailas of `-v`.

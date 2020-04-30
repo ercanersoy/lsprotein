@@ -5,7 +5,7 @@
 
 import sys
 
-lsprotein_version = '0.3'
+lsprotein_version = '0.4'
 
 
 def print_version_information():
