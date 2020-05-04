@@ -4,7 +4,7 @@
 # Written by Ercan Ersoy (http://ercanersoy.net).
 
 import sys
-import urllib
+import urllib3
 import lsprotein.help
 from bs4 import BeautifulSoup
 
@@ -25,15 +25,17 @@ if __name__ == '__main__':
             print('Protein Id character length must equal four.')
             sys.exit(1)
 
-        try:
-            data = urllib.request.urlopen(
-                'http://www.rcsb.org/pdb/rest/describePDB?structureId='
-                + parameter).read()
-        except urllib.error.HTTPError as http_error:
-            print(http_error)
+        pool_manager = urllib3.PoolManager()
+
+        request = pool_manager.request('GET', 'http://www.rcsb.org' +
+                                       '/pdb/rest/describePDB' +
+                                       '?structureId=' + parameter)
+
+        if request.status != 200:
+            print('HTTP Error: ' + request.status)
             sys.exit(2)
 
-        bs = BeautifulSoup(data, 'lxml-xml')
+        bs = BeautifulSoup(request.data, 'lxml-xml')
 
         try:
             pdb = bs.find_all('PDB')[0]

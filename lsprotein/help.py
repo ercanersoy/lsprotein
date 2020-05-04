@@ -6,6 +6,7 @@
 import sys
 import lsprotein.version
 
+
 def print_help_information():
     print('lsprotein ' + lsprotein.version.lsprotein_version)
     print()
