@@ -6,6 +6,14 @@ Copyright (C) 2020 [Ercan Ersoy](http://ercanersoy.net)
 
 This software has been licensed by MIT License.
 
+## Requirements
+
+lsprotein needs these packages are listed below:
+
+* beatifulsoup4
+* setuptools
+* urllib3
+
 ## Usage
 
     lsprotein protein_id [protein_id] [protein_id] ...
