@@ -12,14 +12,14 @@ if __name__ == '__main__':
     if len(sys.argv) == 1:
         lsprotein.help.print_help_information()
 
+    if sys.argv[1] == '-h' or sys.argv[1] == '--help':
+        lsprotein.help.print_help_information()
+
+    if sys.argv[1] == '-v' or sys.argv[1] == '--version':
+        lsprotein.version.print_version_information()
+
     for parameter_index in range(1, len(sys.argv)):
         parameter = sys.argv[parameter_index]
-
-        if parameter == '-h' or parameter == '--help':
-            lsprotein.help.print_help_information()
-
-        if parameter == '-v' or parameter == '--version':
-            lsprotein.version.print_version_information()
 
         if len(parameter) != 4:
             print('Protein Id character length must equal four.')
